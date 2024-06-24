@@ -15,7 +15,7 @@ Project Creator is a tool to automate the creation of project structures, set up
 You can install the package using pip:
 
 ```sh
-pip install project_creator
+pip install EZ_project_creator
 ```
 
 ## Usage
@@ -62,7 +62,7 @@ cd project_creator
 2. Install the package in editable mode:
 
 ```sh
-pip install -e project_creator
+pip install -e EZ_project_creator
 ```
 
 ## Contributing
