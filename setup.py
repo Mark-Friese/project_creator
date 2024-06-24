@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="Mark_Friese",
+    name="project_creator",
     version="1.0.0",
     packages=find_packages(),
     install_requires=[],
@@ -10,7 +10,7 @@ setup(
             "project_creator=project_creator.main:main",
         ],
     },
-    author="Your Name",
+    author="Mark Friese",
     author_email="mark.friese.meng@gmail.com",
     description="A tool to create project structures with virtual environments and package installations",
     long_description=open("README.md").read(),
