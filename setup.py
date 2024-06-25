@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="EZ_project_creator",
-    version="1.0.1",
+    version="1.0.2",
     packages=find_packages(),
     install_requires=[],
     entry_points={
