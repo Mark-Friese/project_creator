@@ -59,10 +59,13 @@ def create_project_structure(project_location, project_name, project_type, addit
         run_subprocess([os.path.join(project_path, "venv",
                        "Scripts", "pip"), "install"] + base_requirements)
 
-        # Install additional packages if provided
+        # Install additional packages if provided and not empty
         if additional_packages:
-            run_subprocess([os.path.join(project_path, "venv",
-                           "Scripts", "pip"), "install"] + additional_packages)
+            additional_packages_list = [
+                pkg.strip() for pkg in additional_packages if pkg.strip()]
+            if additional_packages_list:
+                run_subprocess([os.path.join(
+                    project_path, "venv", "Scripts", "pip"), "install"] + additional_packages_list)
 
         # Create basic README file
         with open(os.path.join(project_path, "README.md"), "w") as f:
@@ -73,7 +76,7 @@ def create_project_structure(project_location, project_name, project_type, addit
         with open(os.path.join(project_path, "requirements.txt"), "w") as f:
             f.write("\n".join(base_requirements))
             if additional_packages:
-                f.write("\n" + "\n".join(additional_packages))
+                f.write("\n" + "\n".join(additional_packages_list))
 
         # Create an initial .gitignore file
         with open(os.path.join(project_path, ".gitignore"), "w") as f:
@@ -122,24 +125,6 @@ def create_project_structure(project_location, project_name, project_type, addit
             with open(os.path.join(project_path, "backend", "app", "main.py"), "w") as f:
                 f.write(
                     "from fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get('/')\ndef read_root():\n    return {'Hello': 'World'}\n")
-            with open(os.path.join(project_path, "mobile", "src", "App.js"), "w") as f:
-                f.write(
-                    "import React from 'react';\nimport { View, Text } from 'react-native';\n\nexport default function App() {\n  return (\n    <View>\n      <Text>Hello, world!</Text>\n    </View>\n  );\n}\n")
-            with open(os.path.join(project_path, "desktop", "src", "main", "main.js"), "w") as f:
-                f.write(
-                    "const { app, BrowserWindow } = require('electron');\n\n"
-                    "function createWindow () {\n"
-                    "  const win = new BrowserWindow({\n"
-                    "    width: 800,\n"
-                    "    height: 600,\n"
-                    "    webPreferences: {\n"
-                    "      nodeIntegration: true\n"
-                    "    }\n"
-                    "  })\n\n"
-                    "  win.loadFile('index.html')\n"
-                    "}\n\n"
-                    "app.whenReady().then(createWindow)\n"
-                )
             with open(os.path.join(project_path, "web", "src", "App.js"), "w") as f:
                 f.write(
                     "import React from 'react';\n\n"
@@ -173,8 +158,10 @@ def main():
     project_name = input("Enter the project name: ")
     project_type = input(
         "Enter the project type (full_stack_website, full_stack_data_science, full_stack_app): ")
-    additional_packages = input(
-        "Enter additional packages to install (comma-separated): ").split(',')
+    additional_packages_input = input(
+        "Enter additional packages to install (comma-separated): ")
+    additional_packages = [
+        pkg.strip() for pkg in additional_packages_input.split(',') if pkg.strip()]
 
     # Save the project location for future use
     config["default_location"] = project_location
