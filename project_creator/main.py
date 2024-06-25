@@ -31,7 +31,7 @@ def create_project_structure(project_location, project_name, project_type, addit
         requirements = {
             "full_stack_website": ["Django", "djangorestframework", "pytest", "selenium"],
             "full_stack_data_science": ["pandas", "numpy", "scikit-learn", "matplotlib", "seaborn", "plotly", "jupyter", "pytest"],
-            "full_stack_app": ["FastAPI", "uvicorn", "pytest", "electron"]
+            "full_stack_app": ["FastAPI", "uvicorn", "pytest"]
         }
 
         # Get the chosen structure and requirements
