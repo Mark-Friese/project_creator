@@ -44,6 +44,21 @@ Enter the project type (full_stack_website, full_stack_data_science, full_stack_
 Enter additional packages to install (comma-separated): requests,beautifulsoup4
 ```
 
+### Folder Structures
+
+<table>
+  <tr>
+    <th>Full Stack Website Structure</th>
+    <th>Full Stack Data Science Structure</th>
+    <th>Full Stack App Structure</th>
+  </tr>
+  <tr>
+    <td><img src="docs/images/full_stack_website.png" alt="Full Stack Website Structure" width="300"></td>
+    <td><img src="docs/images/full_stack_data_science.png" alt="Full Stack Data Science Structure" width="300"></td>
+    <td><img src="docs/images/full_stack_app.png" alt="Full Stack App Structure" width="300"></td>
+  </tr>
+</table>
+
 ## Configuration
 
 The tool saves the last used project location in a configuration file (`project_config.json`) in the current directory. The next time you run the tool, it will use this location as the default.
